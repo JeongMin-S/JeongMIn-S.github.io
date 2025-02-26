@@ -1,5 +1,9 @@
 # #dev blog
 
+[내 블로그](https://jeongmin-s.github.io)
+
+---
+
 git hub pages를 이용한 배포 방법
 
 1. npm create vite@latest my-app
