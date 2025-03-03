@@ -1,13 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import Notfound from "./Notfound";
+import Info from "./Info";
 
-function Main() {
+function MainPage() {
   return (
     <Routes>
-      <Route></Route>
+      <Route path="/info" element={<Info />} />
       <Route path="*" element={<Notfound />} />
     </Routes>
   );
 }
 
-export default Main();
+export default MainPage;
