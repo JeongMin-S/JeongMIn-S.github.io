@@ -1,11 +1,11 @@
 import Page from "./layouts/Page";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter basename="/">
       <Page></Page>
-    </Router>
+    </BrowserRouter>
   );
 }
 
