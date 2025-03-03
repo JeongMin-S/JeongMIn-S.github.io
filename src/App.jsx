@@ -1,7 +1,9 @@
+import Page from "./pages/page";
+
 function App() {
   return (
     <>
-      <h1>hi</h1>
+      <Page></Page>
     </>
   );
 }
