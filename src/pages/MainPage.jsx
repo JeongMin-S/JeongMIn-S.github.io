@@ -6,7 +6,7 @@ function MainPage() {
   return (
     <Routes>
       <Route path="/info" element={<Info />} />
-      <Route path="*" element={<Notfound />} />
+      <Route path="/ㅁㅁ" element={<Notfound />} />
     </Routes>
   );
 }
