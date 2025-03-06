@@ -1,18 +1,17 @@
-function Tag() {
+function Advertisement() {
   return (
     <div
-      id="tag"
+      id="advertisement"
       style={{
         border: "1px, solid, black",
-        backgroundColor: "#e0e0e0",
         padding: 20,
         boxSizing: "border-box",
         textAlign: "center",
       }}
     >
-      tag
+      advertisement
     </div>
   );
 }
 
-export default Tag;
+export default Advertisement;
