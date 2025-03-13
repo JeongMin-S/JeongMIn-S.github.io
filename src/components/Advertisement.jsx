@@ -3,7 +3,7 @@ function Advertisement() {
     <div
       id="advertisement"
       style={{
-        border: "1px, solid, black",
+        border: "1px solid black",
         padding: 20,
         boxSizing: "border-box",
         textAlign: "center",

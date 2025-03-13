@@ -3,7 +3,7 @@ function Category() {
     <div
       id="category"
       style={{
-        border: "1px, solid, black",
+        border: "1px solid black",
         width: "20%",
         maxWidth: 240,
 
