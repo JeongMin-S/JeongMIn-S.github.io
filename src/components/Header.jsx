@@ -8,12 +8,27 @@ function Header() {
         textAlign: "center",
         display: "flex",
         justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
       <div>JeongMin-S</div>
-      <div>
-        <input type="text" placeholder="Search"></input>
-        <button>button</button>
+      <div
+        style={{
+          display: "flex",
+          borderRadius: 20,
+          overflow: "hidden",
+          border: "1px solid black",
+          width: 300,
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Search"
+          style={{ marginLeft: 10, flex: 1, border: "none", outline: "none" }}
+        ></input>
+        <button style={{ border: "none", cursor: "pointer", outline: "none" }}>
+          button
+        </button>
       </div>
       <div>userIcon</div>
     </header>

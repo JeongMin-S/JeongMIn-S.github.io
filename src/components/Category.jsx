@@ -13,7 +13,8 @@ function Category() {
         textAlign: "center",
       }}
     >
-      Category
+      <p>Home</p>
+      <p>Info</p>
     </div>
   );
 }

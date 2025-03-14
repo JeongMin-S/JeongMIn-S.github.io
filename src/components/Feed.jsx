@@ -1,3 +1,7 @@
+import { Routes, Route, HashRouter } from "react-router-dom";
+import Home from "../pages/Home";
+import About from "../pages/about";
+
 function Feed() {
   return (
     <div
@@ -12,7 +16,12 @@ function Feed() {
         textAlign: "center",
       }}
     >
-      feed
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
