@@ -1,3 +1,6 @@
+import { HashRouter, Link } from "react-router-dom";
+import "../styles/Category.css";
+
 function Category() {
   return (
     <div
@@ -13,8 +16,17 @@ function Category() {
         textAlign: "center",
       }}
     >
-      <p>Home</p>
-      <p>Info</p>
+      <HashRouter>
+        <nav>
+          <Link to="/" className="nav-button">
+            Home
+          </Link>
+
+          <Link to="/about" className="nav-button">
+            About
+          </Link>
+        </nav>
+      </HashRouter>
     </div>
   );
 }
