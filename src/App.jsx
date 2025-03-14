@@ -1,10 +1,12 @@
 import Page from "./layouts/Page";
 import "./styles/reset.css";
-
+import { HashRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Page></Page>
+      <HashRouter>
+        <Page></Page>
+      </HashRouter>
     </>
   );
 }

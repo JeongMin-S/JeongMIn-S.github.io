@@ -16,17 +16,15 @@ function Category() {
         textAlign: "center",
       }}
     >
-      <HashRouter>
-        <nav>
-          <Link to="/" className="nav-button">
-            Home
-          </Link>
+      <nav>
+        <Link to="/" className="nav-button">
+          Home
+        </Link>
 
-          <Link to="/about" className="nav-button">
-            About
-          </Link>
-        </nav>
-      </HashRouter>
+        <Link to="/about" className="nav-button">
+          About
+        </Link>
+      </nav>
     </div>
   );
 }

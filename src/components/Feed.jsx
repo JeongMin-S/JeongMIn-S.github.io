@@ -16,12 +16,10 @@ function Feed() {
         textAlign: "center",
       }}
     >
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-        </Routes>
-      </HashRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
+      </Routes>
     </div>
   );
 }
