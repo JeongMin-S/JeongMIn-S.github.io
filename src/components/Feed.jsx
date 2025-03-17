@@ -1,6 +1,7 @@
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/about";
+import BlogPost from "../pages/BlogPost";
 
 function Feed() {
   return (
@@ -19,6 +20,7 @@ function Feed() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/post/:filename" element={<BlogPost />} />
       </Routes>
     </div>
   );

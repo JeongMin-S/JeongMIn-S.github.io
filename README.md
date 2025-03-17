@@ -35,3 +35,10 @@ git hub pages를 이용한 배포 방법
 3. git push -u origin main
 4. npm run build
 5. npm run deploy
+
+---
+
+Vite, GitHub Repository, GitHubPages, GitHub Actions, GitHub API,react-markdown, HashRouter, React, Markdown
+
+markdown파일(포스터) 작성 후 GitHub Repositoy에 올리기
+올린 파일을 프로젝트에서 읽

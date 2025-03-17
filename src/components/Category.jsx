@@ -1,4 +1,4 @@
-import { HashRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/Category.css";
 
 function Category() {
