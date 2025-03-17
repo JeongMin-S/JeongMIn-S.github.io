@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { fetchMarkdownContent } from "../utils/github";
+import { fetchMarkdownContent } from "../util/github"; // 올바른 경로 확인
 
 const MarkdownRenderer = ({ filename }) => {
   const [content, setContent] = useState("");
