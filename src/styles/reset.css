@@ -1,5 +1,10 @@
 html,
-body,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* 전체 화면 높이를 100%로 */
+}
 div,
 span,
 applet,

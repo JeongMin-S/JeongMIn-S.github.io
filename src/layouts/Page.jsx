@@ -6,13 +6,22 @@ import Feed from "../components/Feed";
 
 function Page() {
   return (
-    <div style={{ margin: 10 }}>
+    <div
+      style={{
+        padding: 10,
+        height: "calc(100vh - 20px)",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}
+    >
       <Header></Header>
       <div
         id="container"
         style={{
+          flex: 1,
           display: "flex",
-          height: "calc(100vh - 80px)",
+          overflow: "hidden",
           marginTop: 10,
         }}
       >

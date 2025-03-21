@@ -9,12 +9,9 @@ function Feed() {
       id="feed"
       style={{
         border: "1px solid black",
-        flex: 1,
-        flexGrow: 1,
-        padding: 20,
+        padding: 1,
         boxSizing: "border-box",
         overflowY: "auto",
-        textAlign: "center",
       }}
     >
       <Routes>

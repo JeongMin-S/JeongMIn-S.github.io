@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { fetchMarkdownContent } from "../util/github"; // 올바른 경로 확인
-import "github-markdown-css"; // 글로벌로 CSS를 불러옴
+import "github-markdown-css"; // 가져온 md파일을 markdown이 적용되게 함
 
 const MarkdownRenderer = ({ filename }) => {
   const [content, setContent] = useState("");
