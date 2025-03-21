@@ -1,14 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import MarkdownRender from "../components/MarkdownRender.jsx";
+import MarkdownRenderer from "../components/MarkdownRenderer.jsx";
 
 const BlogPost = () => {
-  const { filename } = useParams();
+  const { "*": filePath } = useParams();
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-xl font-bold mb-4"></h1>
-      <MarkdownRender filename={filename} />
+      <MarkdownRenderer filename={filePath} />
     </div>
   );
 };
