@@ -7,7 +7,7 @@ const BlogPost = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-xl font-bold mb-4">블로그 글 보기</h1>
+      <h1 className="text-xl font-bold mb-4"></h1>
       <MarkdownRender filename={filename} />
     </div>
   );

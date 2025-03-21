@@ -20,7 +20,7 @@ function Feed() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
-        <Route path="/post/:filename" element={<BlogPost />} />
+        <Route path="/post/*" element={<BlogPost />} />
       </Routes>
     </div>
   );
