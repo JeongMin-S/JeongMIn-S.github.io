@@ -1,5 +1,6 @@
+// Header.jsx
 import React from "react";
-import "../styles/HeaderStyles.css"; // 예: 헤더 전용 CSS
+import "../styles/HeaderStyles.css"; // 별도 파일로 관리
 
 function Header() {
   return (

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Category.css";
-import { fetchDirectories } from "../util/github"; // 폴더 목록을 가져올 함수
+import { fetchDirectories } from "../util/github";
 
-function Category() {
+function Category({ onReset }) {
   const [folders, setFolders] = useState([]);
 
   useEffect(() => {
-    // 저장소 루트(또는 원하는 경로)에서 폴더 목록을 가져옴
     fetchDirectories("")
       .then((dirNames) => setFolders(dirNames))
       .catch((err) => console.error(err));
@@ -16,7 +15,8 @@ function Category() {
   return (
     <div id="category">
       <nav>
-        <Link to="/" className="nav-button">
+        {/* Home 버튼: 클릭 시 onReset 호출하여 태그 초기화 */}
+        <Link to="/" className="nav-button" onClick={onReset}>
           Home
         </Link>
         <Link to="/about" className="nav-button">
@@ -24,7 +24,6 @@ function Category() {
         </Link>
       </nav>
       <hr />
-      {/* 폴더 목록 */}
       <div className="folder-list">
         {folders.map((folder) => (
           <Link key={folder} to={`/folders/${folder}`} className="nav-button">
