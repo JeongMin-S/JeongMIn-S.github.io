@@ -1,31 +1,26 @@
-// GitHub API 설정
+// src/util/github.js
+
 const GITHUB_USERNAME = "JeongMin-S";
 const REPO_NAME = "postsGitHubIo";
 const BRANCH = "main";
 
-// URL속 File List 가져오기
+// URL 속 마크다운 파일 목록을 가져오는 함수
 export async function fetchMarkdownFiles(path = "") {
-  // path가 비어있으면 루트 경로, 그렇지 않으면 해당 디렉토리 경로를 사용합니다.
   const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${path}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    //값을 json형식으로
     const items = await response.json();
-
-    // items가 배열이 아니면 빈 배열 반환
     let mdFiles = [];
     if (!Array.isArray(items)) {
       return mdFiles;
     }
-
     for (const item of items) {
       if (item.type === "file" && item.name.endsWith(".md")) {
         mdFiles.push(item);
       } else if (item.type === "dir") {
-        // 하위 폴더의 Markdown 파일들을 재귀적으로 가져옵니다.
         try {
           const subFiles = await fetchMarkdownFiles(item.path);
           mdFiles = mdFiles.concat(subFiles);
@@ -43,10 +38,9 @@ export async function fetchMarkdownFiles(path = "") {
   }
 }
 
-// URL File내용을 Text로 가져오기
+// URL로부터 마크다운 파일 내용을 텍스트로 가져오는 함수
 export async function fetchMarkdownContent(filename) {
   const url = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/${BRANCH}/${filename}`;
-
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -57,6 +51,24 @@ export async function fetchMarkdownContent(filename) {
     console.error(
       `Failed to fetch markdown content from ${url}: ${err.message}`
     );
+    throw err;
+  }
+}
+
+// 저장소 내 특정 경로의 폴더 목록을 가져오는 함수
+export async function fetchDirectories(path = "") {
+  const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const items = await response.json();
+    const dirs = items.filter((item) => item.type === "dir");
+    const dirNames = dirs.map((dir) => dir.name);
+    return dirNames;
+  } catch (err) {
+    console.error(`Failed to fetch directories: ${err.message}`);
     throw err;
   }
 }

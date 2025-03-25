@@ -1,0 +1,50 @@
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 999;
+}
+
+.app-header-container {
+  width: 1000px; /* 원하는 폭 */
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header-brand {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.app-header-search {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 300px;
+}
+
+.app-header-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+}
+
+.app-header-search button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.app-header-user {
+  font-size: 1rem;
+}

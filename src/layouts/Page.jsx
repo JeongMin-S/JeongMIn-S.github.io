@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Category from "../components/Category";
 import Tag from "../components/Tag";
@@ -5,43 +6,42 @@ import Advertisement from "../components/Advertisement";
 import Feed from "../components/Feed";
 
 function Page() {
+  const [selectedTag, setSelectedTag] = useState(null);
+
   return (
-    <div
-      style={{
-        padding: 10,
-        height: "calc(100vh - 20px)",
-        display: "flex",
-        flexDirection: "column",
-        overflow: "hidden",
-      }}
-    >
-      <Header></Header>
-      <div
-        id="container"
-        style={{
-          flex: 1,
-          display: "flex",
-          overflow: "hidden",
-          marginTop: 10,
-        }}
-      >
-        <Category></Category>
+    <>
+      {/* 고정 Header (상단) */}
+      <Header />
+
+      {/* 실제 콘텐츠: 헤더 높이만큼 위쪽 여백을 줘서 겹치지 않게 함 */}
+      <div style={{ marginTop: 60 }}>
+        {/* 중앙 정렬 컨테이너 (예: 1040px = Category 240 + Main 800) */}
         <div
-          id="main"
           style={{
-            marginLeft: 10,
-            flex: 1,
             display: "flex",
-            flexDirection: "column",
-            minHeight: 0,
+            justifyContent: "center",
+            gap: 20,
+            width: 1040,
+            margin: "0 auto",
+            padding: "20px 0",
+            boxSizing: "border-box",
           }}
         >
-          <Tag></Tag>
-          <Advertisement></Advertisement>
-          <Feed></Feed>
+          {/* Category 영역 (폭 240px) */}
+          <div style={{ width: 240 }}>
+            <Category />
+          </div>
+
+          {/* Main 영역 (폭 800px) */}
+          <div style={{ width: 800 }}>
+            <Tag onTagClick={setSelectedTag} />
+            <Advertisement />
+            <Feed selectedTag={selectedTag} onTagClick={setSelectedTag} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
+
 export default Page;

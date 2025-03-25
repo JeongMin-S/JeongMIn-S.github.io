@@ -1,43 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { fetchMarkdownFiles } from "../util/github"; // 위의 코드가 있는 파일
-import { Link } from "react-router-dom";
+import { fetchMarkdownFiles } from "../util/github";
+import PostCard from "../components/PostCard";
+import "../styles/BlogStyles.css"; // CSS 파일 연결
 
-const Home = () => {
+// selectedTag와 onTagClick을 prop으로 받도록 수정합니다.
+function Home({ selectedTag, onTagClick }) {
   const [posts, setPosts] = useState([]);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchMarkdownFiles()
+    fetchMarkdownFiles("")
       .then((files) => setPosts(files))
-      .catch((err) => {
-        console.error("Error fetching markdown files:", err);
-        setError(err.message);
-      });
+      .catch((err) => console.error(err));
   }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   return (
-    <div style={{ padding: "1rem" }}>
-      <h1>블로그 글 목록</h1>
-      {posts.length > 0 ? (
-        <ul>
-          {posts.map((post) => (
-            <li key={post.path}>
-              {/* 예: "java/java-variables.md" -> URL: /post/java/java-variables.md */}
-              <Link to={`/post/${post.path}`}>
-                {post.name.replace(".md", "")}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>글을 불러오는 중...</p>
+    <div className="home-container">
+      {selectedTag && (
+        <div className="filter-info">
+          <span>
+            Filtering by tag: <strong>{selectedTag}</strong>
+          </span>
+          <button
+            className="clear-filter-button"
+            onClick={() => onTagClick(null)}
+          >
+            Clear Filter
+          </button>
+        </div>
       )}
+      <div className="cards-container">
+        {posts.map((post) => (
+          <PostCard
+            key={post.path}
+            post={post}
+            selectedTag={selectedTag}
+            onTagClick={onTagClick}
+          />
+        ))}
+      </div>
     </div>
   );
-};
+}
 
 export default Home;

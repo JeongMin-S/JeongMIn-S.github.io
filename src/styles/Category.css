@@ -1,10 +1,35 @@
+#category {
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
 .nav-button {
   display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  text-align: center;
+  margin: 10px auto;
+  padding: 8px;
+  width: 80%;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
 
+.nav-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* 구분선(hr) 스타일 (선택 사항) */
+#category hr {
+  margin: 16px 0;
   border: none;
-  cursor: pointer;
+  border-top: 1px solid #ccc;
+}
+
+/* 폴더 목록 컨테이너 */
+.folder-list {
+  margin-top: 10px;
 }
