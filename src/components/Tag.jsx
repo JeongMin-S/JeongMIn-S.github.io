@@ -64,8 +64,7 @@ function Tag({ onTagClick }) {
     <div
       id="tag"
       style={{
-        border: "1px solid black",
-        padding: 20,
+        padding: 0,
         boxSizing: "border-box",
         textAlign: "center",
       }}
