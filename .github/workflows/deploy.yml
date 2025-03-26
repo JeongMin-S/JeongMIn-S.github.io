@@ -34,8 +34,9 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }} # 여기를 GITHUB_TOKEN으로 수정
           publish_branch: gh-pages
           publish_dir: ./dist
+          force_orphan: true
           user_name: GitHub Actions
           user_email: actions@github.com
