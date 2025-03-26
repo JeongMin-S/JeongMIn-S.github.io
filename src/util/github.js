@@ -72,3 +72,8 @@ export async function fetchDirectories(path = "") {
     throw err;
   }
 }
+
+// YAML 부분 삭제 함수
+export function removeFrontMatter(markdownText) {
+  return markdownText.replace(/^---\n([\s\S]*?)\n---\n/, "");
+}
