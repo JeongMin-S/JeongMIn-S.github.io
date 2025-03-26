@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # main 브랜치에 커밋이 있을 때 실행
+      - main # main 브랜치에 커밋이 발생할 때 실행
 
 jobs:
   deploy:
@@ -35,5 +35,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages # 브랜치 이름 수정
           publish_dir: ./dist # 빌드 폴더 경로
-          branch: gh-pages # 배포할 브랜치
