@@ -2,40 +2,18 @@ const GITHUB_USERNAME = "JeongMin-S";
 const REPO_NAME = "postsGitHubIo";
 const BRANCH = "main";
 
-// 토큰을 사용해야 하는 경우만 조건부로 사용
-const token = import.meta.env.VITE_GITHUB_TOKEN;
-
 // URL 속 마크다운 파일 목록을 가져오는 함수
 export async function fetchMarkdownFiles(path = "") {
   const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${path}`;
   try {
-    const response = await fetch(url, {
-      // 퍼블릭 저장소에서는 토큰 없이도 가능
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    });
+    const response = await fetch(url); // 토큰 없이 호출
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const items = await response.json();
-    let mdFiles = [];
-    if (!Array.isArray(items)) {
-      return mdFiles;
-    }
-    for (const item of items) {
-      if (item.type === "file" && item.name.endsWith(".md")) {
-        mdFiles.push(item);
-      } else if (item.type === "dir") {
-        try {
-          const subFiles = await fetchMarkdownFiles(item.path);
-          mdFiles = mdFiles.concat(subFiles);
-        } catch (subErr) {
-          console.error(
-            `Failed to fetch markdown files from directory ${item.path}: ${subErr.message}`
-          );
-        }
-      }
-    }
-    return mdFiles;
+    return items.filter(
+      (item) => item.type === "file" && item.name.endsWith(".md")
+    );
   } catch (err) {
     console.error(`Failed to fetch content from ${url}: ${err.message}`);
     throw err;
@@ -46,7 +24,6 @@ export async function fetchMarkdownFiles(path = "") {
 export async function fetchMarkdownContent(filename) {
   const url = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/${BRANCH}/${filename}`;
   try {
-    // 인증 헤더 없이 요청 (퍼블릭 데이터)
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -56,27 +33,6 @@ export async function fetchMarkdownContent(filename) {
     console.error(
       `Failed to fetch markdown content from ${url}: ${err.message}`
     );
-    throw err;
-  }
-}
-
-// 저장소 내 특정 경로의 폴더 목록을 가져오는 함수
-export async function fetchDirectories(path = "") {
-  const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`;
-  try {
-    const response = await fetch(url, {
-      // 퍼블릭 저장소에서는 토큰 없이도 가능
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const items = await response.json();
-    const dirs = items.filter((item) => item.type === "dir");
-    const dirNames = dirs.map((dir) => dir.name);
-    return dirNames;
-  } catch (err) {
-    console.error(`Failed to fetch directories: ${err.message}`);
     throw err;
   }
 }
