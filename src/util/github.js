@@ -80,7 +80,7 @@ export async function fetchDirectories(path = "") {
   }
 }
 
-// YAML 부분 삭제 함수.....
+// YAML 부분 삭제 함수
 export function removeFrontMatter(markdownText) {
   return markdownText.replace(/^---\n([\s\S]*?)\n---\n/, "");
 }
