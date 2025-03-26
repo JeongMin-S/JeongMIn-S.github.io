@@ -3,12 +3,15 @@
 const GITHUB_USERNAME = "JeongMin-S";
 const REPO_NAME = "postsGitHubIo";
 const BRANCH = "main";
+const token = import.meta.env.VITE_GITHUB_TOKEN;
 
 // URL 속 마크다운 파일 목록을 가져오는 함수
 export async function fetchMarkdownFiles(path = "") {
   const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${path}`;
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: { Authorization: `token ${token}` },
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -42,6 +45,7 @@ export async function fetchMarkdownFiles(path = "") {
 export async function fetchMarkdownContent(filename) {
   const url = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/${BRANCH}/${filename}`;
   try {
+    // 인증 헤더 없이 요청합니다.
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -59,7 +63,9 @@ export async function fetchMarkdownContent(filename) {
 export async function fetchDirectories(path = "") {
   const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`;
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: { Authorization: `token ${token}` },
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
