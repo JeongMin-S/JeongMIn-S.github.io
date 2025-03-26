@@ -3,18 +3,18 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # main 브랜치에 커밋이 발생할 때 실행
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. 코드 가져오기
+      # 1. 저장소 클론
       - name: Check out the repository
         uses: actions/checkout@v2
 
-      # 2. Node.js 환경 설정
+      # 2. Node.js 설정
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -35,5 +35,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages # 브랜치 이름 수정
-          publish_dir: ./dist # 빌드 폴더 경로
+          publish_branch: gh-pages
+          publish_dir: ./dist
+          user_name: GitHub Actions
+          user_email: actions@github.com
