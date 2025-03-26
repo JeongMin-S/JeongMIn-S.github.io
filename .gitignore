@@ -1,5 +1,6 @@
+# Vite 환경 변수 파일 무시
 .env
-*.env
+.env.*
 
 # Logs
 logs
