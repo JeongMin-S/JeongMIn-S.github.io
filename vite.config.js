@@ -5,6 +5,6 @@ export default defineConfig({
   base: "/",
   plugins: [react()],
   define: {
-    "process.env": {}, // 환경 변수를 전역으로 사용 가능하게 설정
+    "process.env": {}, //환경 변수를 전역으로 사용 가능하게 설정
   },
 });
